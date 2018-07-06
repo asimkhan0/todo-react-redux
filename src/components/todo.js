@@ -1,5 +1,6 @@
 import React from 'react';
 import ActionBox from "../containers/ActionBox";
+import AddTodo from "./AddTodo";
 
 export default class Todo extends React.Component {
   
@@ -14,33 +15,39 @@ export default class Todo extends React.Component {
     this.setState({isEditMode: !this.state.isEditMode});
   }
   
+  taskStatusChanged = (taskId, status) => {
+    this.props.taskStatusChanged(taskId, status);
+  }
+  
+  editTask = (newText) => {
+    console.log('editTask');
+    this.props.taskEdit(this.props.todo.id, newText);
+    this.props.onUpdate();
+    this.toggleActionBox();
+  }
+  
   render() {
-    const {text, status} = this.props.todo;
+    const {text, status, id} = this.props.todo;
     const {isEditMode} = this.state;
-    
+    if(!isEditMode) {
     return (
-      <span>
-    <li className={`todoContainer`}>
-      {!isEditMode ?
-        (<span onClick={() => this.toggleActionBox()}>
-          <h2>{text}</h2>
-          <h4>{status}</h4>
-        </span>) :
-        <ActionBox todo={this.props.todo} toggleActionBox={this.toggleActionBox} onUpdate={this.props.onUpdate}/>
+      <div className="box">
+        <h3>{text}</h3>
+        <p>{status}</p>
+        <div className="box-hvr">
+          {status === 'Active' ?
+            <button onClick={() => this.taskStatusChanged(id,'Completed')}>Completed</button>:
+            <button onClick={() => this.taskStatusChanged(id,'Active')} className="undo">Undo</button>
+          }
+          <p>|</p>
+          <button onClick={() => this.toggleActionBox()}>Edit</button>
+        </div>
+      </div>
+    )} else
+      {
+        return (
+          <AddTodo editTask={this.editTask} text={text} id={id} editMode={true}/>
+        )
       }
-    </li>
-  </span>
-    );
   }
 }
-
-//
-//   render() {
-//     debugger;
-//     return (
-//       <li>
-//         {this.props.todo.text}
-//       </li>
-//     )
-//   }
-// }

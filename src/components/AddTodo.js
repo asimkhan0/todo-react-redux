@@ -22,14 +22,20 @@ export default class AddTodo extends React.Component {
   
   render() {
     return(
-      <div>
-        <input type='textarea'
-               value={this.state.text}
+      <div className="box">
+        <div className="save-tasks">
+        <input type='text'
+               value={this.state.text }
+               placeholder={`Enter Task Name`}
                ref={text => this.taskText = text}
                onChange={this.onTextChange}
         />
-        <button onClick={() => {this.props.editMode? this.props.editTask(this.taskText.value):
-          this.props.addTask(this.taskText.value)}}> Save </button>
+          <p>
+            <button onClick={() => {this.props.editMode? this.props.editTask(this.taskText.value):
+              this.props.addTask(this.taskText.value)}}> Save </button>
+          </p>
+        
+      </div>
       </div>
     );
   }

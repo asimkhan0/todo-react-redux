@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
-import Todo from "./todo";
+import Todo from "../containers/TodoActions";
 import AddTodo from "./AddTodo";
 import {Header} from "./header";
+import {TopHeader} from "./TopHeader";
 
 export default class TodoComponent extends Component {
  constructor(props) {
@@ -39,18 +40,25 @@ export default class TodoComponent extends Component {
   }
   render() {
         return (
-          <div>
+          <div className={`todo`}>
+            <TopHeader/>
+            <div className="inner-info">
             <Header activeTasks={this.state.activeTasks}/>
-            <ul>
+            <div className="main-wrap">
               {this.state.todos.map((value) => {
                 return <Todo todo={value} key={value.id} onUpdate={this.calculateActiveTasks}/>
               })
               }
-            </ul>
-            <button onClick={this.addTodoInit}> Add Task </button>
-            {this.state.showAddTodo ?
-              <AddTodo addTask={this.addTodo}/>: null
-            }
+              {!this.state.showAddTodo ?
+                <div className="box no-border">
+                  <div className="add-tasks">
+                    <button onClick={this.addTodoInit}> +Add Task</button>
+                  </div>
+                </div>:
+                <AddTodo addTask={this.addTodo}/>
+              }
+            </div>
+            </div>
           </div>
         )
     }

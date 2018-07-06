@@ -8,7 +8,6 @@ export default function TodoReducer(state = [], action) {
     case types.status_changed:
       return markTodo(state, action.payload.id,action.payload.status);
     case types.text_changed:
-      debugger;
       return changeTodoText(state, action.payload.id,action.payload.text);
     default:
       return state;

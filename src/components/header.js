@@ -1,23 +1,18 @@
 import React from 'react';
 
 export const Header = (props) => {
-  debugger;
   return (
     <div>
-      <h2>Simple Task</h2>
-      <p>Hello User!</p>
-      <hr />
-      <h1>Your Tasks</h1>
-      { props.activeTasks !== null ? props.activeTasks !== 0?
-        <div>
-          <h3>Complete All Tasks</h3>
-          <p>You have {props.activeTasks} active tasks</p>
-        </div> :
-        <div>
-          <h3>All Tasks Completed</h3>
-          <p>Well Done!</p>
-        </div>: null
-      }
+        <h2>Your Tasks</h2>
+        { props.activeTasks !== null ? props.activeTasks !== 0?
+        <div className="alert-box">
+          <h6>Complete all tasks</h6>
+          <span>You have {props.activeTasks} active tasks</span>
+        </div>:
+          <div className="alert-box success-box">
+            <h6>All Tasks Completed</h6>
+            <span>Well Done!</span>
+          </div>: null}
     </div>
   );
 }

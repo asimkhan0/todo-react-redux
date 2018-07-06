@@ -43,7 +43,3 @@ export default class ActionBox extends React.Component {
     );
   }
 }
-
-// () => this.props.onChangeStatus(this.props.taskId, 'Completed')
-// () => this.props.onChangeStatus(this.props.taskId, 'Active')
-// onClick={}
