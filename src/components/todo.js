@@ -1,5 +1,4 @@
 import React from 'react';
-import ActionBox from "../containers/ActionBox";
 import AddTodo from "./AddTodo";
 
 export default class Todo extends React.Component {
@@ -20,7 +19,6 @@ export default class Todo extends React.Component {
   }
   
   editTask = (newText) => {
-    console.log('editTask');
     this.props.taskEdit(this.props.todo.id, newText);
     this.props.onUpdate();
     this.toggleActionBox();

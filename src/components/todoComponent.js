@@ -35,7 +35,6 @@ export default class TodoComponent extends Component {
   }
   calculateActiveTasks = () => {
     const activeTasks = this.state.todos.filter((todo) => todo.status === 'Active');
-    console.log(activeTasks.length);
     this.setState({activeTasks: activeTasks.length});
   }
   render() {
