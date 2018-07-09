@@ -10,11 +10,7 @@ function mapStateToProps(state) {
 
 function mapDispatchTOProps(dispatch) {
   return {
-    addTodo      : (taskText) => dispatch(actions.addTodo(taskText)),
-    // onEditTask     : taskId => dispatch(actions.updateTask(taskId)),
-    // onRemoveTask   : taskId => dispatch(actions.removeTask(taskId)),
-    // onTaskCompleted: taskId => dispatch(actions.taskCompleted(taskId)),
-    // onUndoCompleted: taskId => dispatch(actions.undoCompleted(taskId))
+    addTodo      : (taskText) => dispatch(actions.addTodo(taskText))
   }
 }
 
